@@ -11,6 +11,7 @@ import {
   Animated,
 } from "react-native";
 import { ProgressCircle } from "react-native-svg-charts";
+import * as Progress from "react-native-progress";
 import Icon from "react-native-vector-icons/Ionicons";
 import IconFa from "react-native-vector-icons/FontAwesome5";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -298,7 +299,7 @@ class mainscreen extends React.Component {
                         alignItems: "center",
                         borderRadius: 4,
                         flexDirection: "row",
-                        justifyContent: "space-between",
+                        justifyContent: "space-around",
                       }}
                     >
                       <Text
@@ -383,8 +384,212 @@ class mainscreen extends React.Component {
                 </View>
               </View>
             </View>
-            <View style={styles.activitiesCard}></View>
-            <View style={styles.activitiesCard}></View>
+            <View style={styles.activitiesCard}>
+              <View style={{ marginHorizontal: 20 }}>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    marginTop: 10,
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <View style={{ flexDirection: "row" }}>
+                    <Icon name="ios-restaurant" size={25} color={"#09C6B9"} />
+                    <Text
+                      style={{
+                        fontSize: 15,
+                        color: "#4A4A4A",
+                        fontFamily: "avenirNextMedium",
+                        left: 10,
+                      }}
+                    >
+                      Food
+                    </Text>
+                  </View>
+                  <TouchableOpacity>
+                    <View
+                      style={{
+                        borderColor: "#4A4A4A",
+                        borderWidth: 1,
+                        height: 25,
+                        width: 70,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        borderRadius: 4,
+                        flexDirection: "row",
+                        justifyContent: "space-around",
+                      }}
+                    >
+                      <Text
+                        style={{
+                          fontSize: 15,
+                          color: "#4A4A4A",
+                          fontFamily: "avenirNextMedium",
+                          left: 5,
+                        }}
+                      >
+                        Add
+                      </Text>
+                      <Icon name="ios-add-circle-outline" size={20} />
+                    </View>
+                  </TouchableOpacity>
+                </View>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    marginTop: 10,
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      marginRight: 20,
+                    }}
+                  >
+                    <Text
+                      style={{
+                        fontSize: 25,
+                        color: "#4A4A4A",
+                        fontFamily: "avenirNextCondensedDemiBold",
+                      }}
+                    >
+                      0
+                    </Text>
+                    <Text
+                      style={{
+                        fontSize: 12,
+                        color: "#4A4A4A",
+                        fontFamily: "avenirNextCondensedDemiBold",
+                        marginTop: 15,
+                        marginLeft: 5,
+                      }}
+                    >
+                      / 2150 cal
+                    </Text>
+                  </View>
+                  <Progress.Bar
+                    progress={0.3}
+                    width={100}
+                    height={10}
+                    color={"#09C6B9"}
+                    style={{
+                      alignSelf: "flex-end",
+                      bottom: 15,
+                    }}
+                    unfilledColor={"#DEDEDE"}
+                    borderColor={"#FFFFFF"}
+                  />
+                </View>
+              </View>
+            </View>
+            <View style={styles.activitiesCard}>
+              <View style={{ marginHorizontal: 20 }}>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    marginTop: 10,
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <View style={{ flexDirection: "row" }}>
+                    <Icon name="ios-cloudy-night" size={25} color={"#8553C6"} />
+                    <Text
+                      style={{
+                        fontSize: 15,
+                        color: "#4A4A4A",
+                        fontFamily: "avenirNextMedium",
+                        left: 10,
+                      }}
+                    >
+                      Sleep
+                    </Text>
+                  </View>
+                  <TouchableOpacity>
+                    <Icon name="ios-checkmark-circle-outline" size={25} />
+                  </TouchableOpacity>
+                </View>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <View
+                    style={{
+                      // marginHorizontal: 20,
+                      flexDirection: "row",
+                      marginTop: 10,
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <View
+                      style={{
+                        flexDirection: "row",
+                      }}
+                    >
+                      <View style={{ flexDirection: "row" }}>
+                        <Text
+                          style={{
+                            fontSize: 25,
+                            color: "#4A4A4A",
+                            fontFamily: "avenirNextCondensedDemiBold",
+                          }}
+                        >
+                          7
+                        </Text>
+                        <Text
+                          style={{
+                            fontSize: 12,
+                            color: "#4A4A4A",
+                            fontFamily: "avenirNextCondensedDemiBold",
+                            marginTop: 15,
+                            marginLeft: 5,
+                          }}
+                        >
+                          hrs
+                        </Text>
+                      </View>
+                      <View style={{ flexDirection: "row" }}>
+                        <Text
+                          style={{
+                            fontSize: 25,
+                            color: "#4A4A4A",
+                            fontFamily: "avenirNextCondensedDemiBold",
+                            marginLeft: 5,
+                          }}
+                        >
+                          30
+                        </Text>
+                        <Text
+                          style={{
+                            fontSize: 12,
+                            color: "#4A4A4A",
+                            fontFamily: "avenirNextCondensedDemiBold",
+                            marginTop: 15,
+                            marginLeft: 5,
+                          }}
+                        >
+                          min
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                  <Progress.Bar
+                    progress={0.3}
+                    width={100}
+                    height={10}
+                    color={"#BC92F3"}
+                    style={{
+                      alignSelf: "flex-end",
+                      bottom: 15,
+                    }}
+                    unfilledColor={"#DEDEDE"}
+                    borderColor={"#FFFFFF"}
+                  />
+                </View>
+              </View>
+            </View>
             <View style={styles.activitiesCard}></View>
             <Text>
               Pedometer.isAvailableAsync(): {this.state.isPedometerAvailable}
