@@ -8,14 +8,13 @@ import {
   SafeAreaView,
   StatusBar,
   ScrollView,
-  Animated,
 } from "react-native";
 import { ProgressCircle } from "react-native-svg-charts";
-import * as Progress from "react-native-progress";
-import Icon from "react-native-vector-icons/Ionicons";
-import IconFa from "react-native-vector-icons/FontAwesome5";
-import { TouchableOpacity } from "react-native-gesture-handler";
-
+import ActiveTime from "../cardcomponents/ActiveTime";
+import Exercise from "../cardcomponents/Exercise";
+import Food from "../cardcomponents/Food";
+import Weight from "../cardcomponents/Weight";
+import Sleep from "../cardcomponents/Sleep";
 class mainscreen extends React.Component {
   constructor(props) {
     super(props);
@@ -45,6 +44,9 @@ class mainscreen extends React.Component {
 
     Pedometer.isAvailableAsync().then(
       (result) => {
+        if (!result) {
+          alert("You dont have sensor required to run this application !!");
+        }
         this.setState({
           isPedometerAvailable: String(result),
         });
@@ -99,18 +101,29 @@ class mainscreen extends React.Component {
             },
           ]}
         >
-          <Text
-            style={{
-              fontSize: 20,
-              color: "#4A4A4A",
-              marginHorizontal: 16,
-              fontFamily: "avenirNextRegular",
-              textTransform: "uppercase",
-              fontWeight: "800",
-            }}
-          >
-            Fitness
-          </Text>
+          <View style={{ flexDirection: "row" }}>
+            <Text
+              style={{
+                fontSize: 15,
+                color: "#4A4A4A",
+                fontFamily: "avenirNextRegular",
+                fontWeight: "900",
+              }}
+            >
+              Fitness
+            </Text>
+            <Text
+              style={{
+                fontSize: 25,
+                color: "#4A4A4A",
+                fontFamily: "avenirNextRegular",
+                textTransform: "uppercase",
+                fontWeight: "bold",
+              }}
+            >
+              Tracker
+            </Text>
+          </View>
         </View>
         <ScrollView
           showsVerticalScrollIndicator={false}
@@ -151,452 +164,11 @@ class mainscreen extends React.Component {
                 </Text>
               </View>
             </View>
-            <View style={styles.activitiesCard}>
-              <View
-                style={{
-                  marginHorizontal: 20,
-                  flexDirection: "row",
-                  marginTop: 10,
-                }}
-              >
-                <Icon name="md-timer" size={23} color={"#8641F4"} />
-                <Text
-                  style={{
-                    fontSize: 15,
-                    color: "#4A4A4A",
-                    fontFamily: "avenirNextMedium",
-                    left: 10,
-                  }}
-                >
-                  Active Time
-                </Text>
-              </View>
-              <View
-                style={{
-                  marginHorizontal: 20,
-                  flexDirection: "row",
-                  marginTop: 10,
-                  justifyContent: "space-between",
-                }}
-              >
-                <View
-                  style={{
-                    flexDirection: "row",
-                  }}
-                >
-                  <Text
-                    style={{
-                      fontSize: 25,
-                      color: "#4A4A4A",
-                      fontFamily: "avenirNextCondensedDemiBold",
-                    }}
-                  >
-                    18
-                  </Text>
-                  <Text
-                    style={{
-                      fontSize: 12,
-                      color: "#4A4A4A",
-                      fontFamily: "avenirNextCondensedDemiBold",
-                      marginTop: 15,
-                      marginLeft: 5,
-                    }}
-                  >
-                    /60 mins
-                  </Text>
-                </View>
-                <View
-                  style={{
-                    flexDirection: "row",
-                  }}
-                >
-                  <View
-                    style={{
-                      flexDirection: "row",
-                      marginRight: 20,
-                    }}
-                  >
-                    <Text
-                      style={{
-                        fontSize: 25,
-                        color: "#4A4A4A",
-                        fontFamily: "avenirNextCondensedDemiBold",
-                      }}
-                    >
-                      1193
-                    </Text>
-                    <Text
-                      style={{
-                        fontSize: 12,
-                        color: "#4A4A4A",
-                        fontFamily: "avenirNextCondensedDemiBold",
-                        marginTop: 15,
-                        marginLeft: 5,
-                      }}
-                    >
-                      cal
-                    </Text>
-                  </View>
-                  <View
-                    style={{
-                      flexDirection: "row",
-                    }}
-                  >
-                    <Text
-                      style={{
-                        fontSize: 25,
-                        color: "#4A4A4A",
-                        fontFamily: "avenirNextCondensedDemiBold",
-                      }}
-                    >
-                      1.34
-                    </Text>
-                    <Text
-                      style={{
-                        fontSize: 12,
-                        color: "#4A4A4A",
-                        fontFamily: "avenirNextCondensedDemiBold",
-                        marginTop: 15,
-                        marginLeft: 5,
-                      }}
-                    >
-                      km
-                    </Text>
-                  </View>
-                </View>
-              </View>
-            </View>
-            <View style={styles.activitiesCard}>
-              <View style={{ marginHorizontal: 20 }}>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    marginTop: 10,
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <View style={{ flexDirection: "row" }}>
-                    <IconFa name="running" size={20} color={"#5CDE1A"} />
-                    <Text
-                      style={{
-                        fontSize: 15,
-                        color: "#4A4A4A",
-                        fontFamily: "avenirNextMedium",
-                        left: 10,
-                      }}
-                    >
-                      Exercise
-                    </Text>
-                  </View>
-                  <TouchableOpacity>
-                    <View
-                      style={{
-                        borderColor: "#4A4A4A",
-                        borderWidth: 1,
-                        height: 25,
-                        width: 80,
-                        justifyContent: "center",
-                        alignItems: "center",
-                        borderRadius: 4,
-                        flexDirection: "row",
-                        justifyContent: "space-around",
-                      }}
-                    >
-                      <Text
-                        style={{
-                          fontSize: 15,
-                          color: "#4A4A4A",
-                          fontFamily: "avenirNextMedium",
-                          left: 5,
-                        }}
-                      >
-                        Start
-                      </Text>
-                      <Icon name="ios-arrow-dropright" size={20} />
-                    </View>
-                  </TouchableOpacity>
-                </View>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    justifyContent: "space-evenly",
-                    marginTop: 20,
-                    borderColor: "lightgrey",
-                    borderWidth: 1,
-                    borderRadius: 5,
-                    backgroundColor: "#d3d3d3",
-                  }}
-                >
-                  <TouchableOpacity>
-                    <View
-                      style={{
-                        flexDirection: "row",
-                        justifyContent: "space-between",
-                      }}
-                    >
-                      <Text
-                        style={{
-                          fontSize: 15,
-                          color: "#4A4A4A",
-                          fontFamily: "avenirNextCondensedRegular",
-                        }}
-                      >
-                        Running
-                      </Text>
-                      <Text
-                        style={{
-                          fontSize: 12,
-                          color: "#4A4A4A",
-                          fontFamily: "avenirNextCondensedRegular",
-                          marginLeft: 10,
-                          marginTop: 5,
-                        }}
-                      >
-                        00:00:14
-                      </Text>
-                    </View>
-                  </TouchableOpacity>
-                  <View
-                    style={{ justifyContent: "center", alignSelf: "center" }}
-                  >
-                    <Text
-                      style={{
-                        fontSize: 10,
-                        color: "black",
-                        fontFamily: "avenirNextCondensedRegular",
-                      }}
-                    >
-                      |
-                    </Text>
-                  </View>
-                  <TouchableOpacity>
-                    <Text
-                      style={{
-                        fontSize: 15,
-                        color: "#4A4A4A",
-                        fontFamily: "avenirNextCondensedRegular",
-                        // right: 5,
-                      }}
-                    >
-                      Recent Workout
-                    </Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            </View>
-            <View style={styles.activitiesCard}>
-              <View style={{ marginHorizontal: 20 }}>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    marginTop: 10,
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <View style={{ flexDirection: "row" }}>
-                    <Icon name="ios-restaurant" size={25} color={"#09C6B9"} />
-                    <Text
-                      style={{
-                        fontSize: 15,
-                        color: "#4A4A4A",
-                        fontFamily: "avenirNextMedium",
-                        left: 10,
-                      }}
-                    >
-                      Food
-                    </Text>
-                  </View>
-                  <TouchableOpacity>
-                    <View
-                      style={{
-                        borderColor: "#4A4A4A",
-                        borderWidth: 1,
-                        height: 25,
-                        width: 70,
-                        justifyContent: "center",
-                        alignItems: "center",
-                        borderRadius: 4,
-                        flexDirection: "row",
-                        justifyContent: "space-around",
-                      }}
-                    >
-                      <Text
-                        style={{
-                          fontSize: 15,
-                          color: "#4A4A4A",
-                          fontFamily: "avenirNextMedium",
-                          left: 5,
-                        }}
-                      >
-                        Add
-                      </Text>
-                      <Icon name="ios-add-circle-outline" size={20} />
-                    </View>
-                  </TouchableOpacity>
-                </View>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    marginTop: 10,
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <View
-                    style={{
-                      flexDirection: "row",
-                      marginRight: 20,
-                    }}
-                  >
-                    <Text
-                      style={{
-                        fontSize: 25,
-                        color: "#4A4A4A",
-                        fontFamily: "avenirNextCondensedDemiBold",
-                      }}
-                    >
-                      0
-                    </Text>
-                    <Text
-                      style={{
-                        fontSize: 12,
-                        color: "#4A4A4A",
-                        fontFamily: "avenirNextCondensedDemiBold",
-                        marginTop: 15,
-                        marginLeft: 5,
-                      }}
-                    >
-                      / 2150 cal
-                    </Text>
-                  </View>
-                  <Progress.Bar
-                    progress={0.3}
-                    width={100}
-                    height={10}
-                    color={"#09C6B9"}
-                    style={{
-                      alignSelf: "flex-end",
-                      bottom: 15,
-                    }}
-                    unfilledColor={"#DEDEDE"}
-                    borderColor={"#FFFFFF"}
-                  />
-                </View>
-              </View>
-            </View>
-            <View style={styles.activitiesCard}>
-              <View style={{ marginHorizontal: 20 }}>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    marginTop: 10,
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <View style={{ flexDirection: "row" }}>
-                    <Icon name="ios-cloudy-night" size={25} color={"#8553C6"} />
-                    <Text
-                      style={{
-                        fontSize: 15,
-                        color: "#4A4A4A",
-                        fontFamily: "avenirNextMedium",
-                        left: 10,
-                      }}
-                    >
-                      Sleep
-                    </Text>
-                  </View>
-                  <TouchableOpacity>
-                    <Icon name="ios-checkmark-circle-outline" size={25} />
-                  </TouchableOpacity>
-                </View>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <View
-                    style={{
-                      // marginHorizontal: 20,
-                      flexDirection: "row",
-                      marginTop: 10,
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <View
-                      style={{
-                        flexDirection: "row",
-                      }}
-                    >
-                      <View style={{ flexDirection: "row" }}>
-                        <Text
-                          style={{
-                            fontSize: 25,
-                            color: "#4A4A4A",
-                            fontFamily: "avenirNextCondensedDemiBold",
-                          }}
-                        >
-                          7
-                        </Text>
-                        <Text
-                          style={{
-                            fontSize: 12,
-                            color: "#4A4A4A",
-                            fontFamily: "avenirNextCondensedDemiBold",
-                            marginTop: 15,
-                            marginLeft: 5,
-                          }}
-                        >
-                          hrs
-                        </Text>
-                      </View>
-                      <View style={{ flexDirection: "row" }}>
-                        <Text
-                          style={{
-                            fontSize: 25,
-                            color: "#4A4A4A",
-                            fontFamily: "avenirNextCondensedDemiBold",
-                            marginLeft: 5,
-                          }}
-                        >
-                          30
-                        </Text>
-                        <Text
-                          style={{
-                            fontSize: 12,
-                            color: "#4A4A4A",
-                            fontFamily: "avenirNextCondensedDemiBold",
-                            marginTop: 15,
-                            marginLeft: 5,
-                          }}
-                        >
-                          min
-                        </Text>
-                      </View>
-                    </View>
-                  </View>
-                  <Progress.Bar
-                    progress={0.3}
-                    width={100}
-                    height={10}
-                    color={"#BC92F3"}
-                    style={{
-                      alignSelf: "flex-end",
-                      bottom: 15,
-                    }}
-                    unfilledColor={"#DEDEDE"}
-                    borderColor={"#FFFFFF"}
-                  />
-                </View>
-              </View>
-            </View>
-            <View style={styles.activitiesCard}></View>
-            <Text>
-              Pedometer.isAvailableAsync(): {this.state.isPedometerAvailable}
-            </Text>
-            <Text>
-              Steps taken in the last 24 hours: {this.state.pastStepCount}
-            </Text>
+            <ActiveTime />
+            <Exercise />
+            <Food />
+            <Weight />
+            <Sleep />
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -617,10 +189,10 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
   nestedContainer: {
-    // marginHorizontal: 20,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#DEDEDE",
+    paddingBottom: 40,
   },
   stepsCard: {
     height: 300,
@@ -630,17 +202,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 10,
-    elevation: 2,
-  },
-  activitiesCard: {
-    height: 100,
-    width: Dimensions.get("window").width - 30,
-    backgroundColor: "#FFFFFF",
-    borderColor: "#DEDEDE",
-    borderRadius: 10,
-    // justifyContent: "center",
-    // alignItems: "center",
     marginTop: 10,
     elevation: 2,
   },
